@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haiduk Solutions | Portfolio</title>
+    
+    <!-- Google Fonts: Inter for a modern, clean look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS: For rapid, utility-first styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Styles & Animations: Enhancements not easily done with pure Tailwind -->
+    <style>
+        /* Base font for the entire body */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff; /* Default white background */
+            color: #111827; /* Dark gray text, almost black */
+            transition: background-color 0.3s ease-out; /* Smooth transition for background color changes */
+        }
+        /* Smooth scrolling for anchor links, providing a better user experience */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Minimalist Button Styles: Custom classes for consistent button appearance */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            font-weight: 600; /* Semi-bold text */
+            border-radius: 8px; /* Rounded corners for buttons */
+            /* Smooth transitions for hover effects */
+            transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+        }
+        .btn:hover {
+            transform: translateY(-2px); /* Slight lift on hover */
+        }
+        .btn-dark {
+            background-color: #111827; /* Dark background */
+            color: #ffffff; /* White text */
+        }
+        .btn-dark:hover {
+            background-color: #374151; /* Slightly lighter dark on hover */
+        }
+        .btn-outline {
+            border: 2px solid #111827; /* Dark border */
+            color: #111827; /* Dark text */
+        }
+        .btn-outline:hover {
+            background-color: #111827; /* Dark background on hover */
+            color: #ffffff; /* White text on hover */
+        }
+
+        /* Card hover effect: Used for service tiles and project cards */
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for lift and shadow */
+        }
+        .card-hover:hover {
+            transform: translateY(-8px); /* Lifts the card up */
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08); /* Adds a subtle shadow */
+        }
+
+        /* Scroll-triggered Animations: Elements fade in and slide up when they become visible */
+        .animate-on-scroll {
+            opacity: 0; /* Initially hidden */
+            transform: translateY(40px); /* Starts below its final position */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth animation */
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1; /* Fully visible */
+            transform: translateY(0); /* Moves to its final position */
+        }
+        
+        /* Header Logo Styling */
+        .header-logo {
+            height: 28px; /* Fixed height for the logo */
+            width: auto; /* Maintain aspect ratio */
+        }
+
+        /* Header Background Animation */
+        .header-animated-bg {
+            /* Subtle gradient background that animates */
+            background: linear-gradient(135deg, #ffffff, #f0f0f0, #ffffff);
+            background-size: 200% 200%; /* Larger than element to allow movement */
+            animation: subtleGradient 15s ease infinite alternate; /* Animation properties */
+        }
+
+        @keyframes subtleGradient {
+            0% { background-position: 0% 50%; } /* Start position */
+            50% { background-position: 100% 50%; } /* Mid position */
+            100% { background-position: 0% 50%; } /* End position, loops back */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header Section: Fixed at the top, blurring background for modern effect -->
+    <header id="main-header" class="bg-white/80 backdrop-blur-md shadow-sm fixed w-full top-0 z-50 header-animated-bg">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo Link -->
+            <a href="#" aria-label="Haiduk Solutions Home">
+                <img src="HAIDUK SOLUTIONS Logo.png" alt="Haiduk Solutions Logo" class="header-logo" 
+                     onerror="this.onerror=null;this.src='https://placehold.co/200x40/000/fff?text=Haiduk+Solutions';">
+            </a>
+            <!-- Desktop Navigation Menu -->
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="#about" class="text-gray-700 hover:text-black font-medium">About</a>
+                <a href="#philosophy" class="text-gray-700 hover:text-black font-medium">Philosophy</a>
+                <a href="#services" class="text-gray-700 hover:text-black font-medium">Services</a>
+                <a href="#projects" class="text-gray-700 hover:text-black font-medium">Projects</a>
+                <a href="#contact" class="text-gray-700 hover:text-black font-medium">Contact</a>
+            </nav>
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-button" class="md:hidden flex items-center" aria-label="Toggle mobile menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Navigation Menu: Hidden by default, toggled by JS -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <a href="#about" class="block py-3 px-6 text-sm hover:bg-gray-50">About</a>
+            <a href="#philosophy" class="block py-3 px-6 text-sm hover:bg-gray-50">Philosophy</a>
+            <a href="#services" class="block py-3 px-6 text-sm hover:bg-gray-50">Services</a>
+            <a href="#projects" class="block py-3 px-6 text-sm hover:bg-gray-50">Projects</a>
+            <a href="#contact" class="block py-3 px-6 text-sm hover:bg-gray-50">Contact</a>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main>
+        <!-- Hero Section: The main introductory section -->
+        <section id="hero" class="pt-40 pb-24 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 animate-on-scroll">Smart Systems for Sustainable Growth</h1>
+                <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-3xl mx-auto animate-on-scroll" style="transition-delay: 150ms;">We build custom tools and workflows in the Google ecosystem to help you simplify operations, organize data, and get your time back.</p>
+                <div class="animate-on-scroll" style="transition-delay: 300ms;">
+                    <!-- Updated "Start Here" button to redirect to the Google Forms URL -->
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSer20WFQCgjzoPH9UISJDUf3suWCOfgbkZpZNPON2tNLtXrzg/viewform?usp=send_form" target="_blank" class="btn btn-dark text-lg" rel="noopener noreferrer">Start Here</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section: Details about the founder/company -->
+        <section id="about" class="py-24 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+                    <div class="md:w-1/3 text-center animate-on-scroll">
+                        <!-- Profile image with fallback -->
+                        <img src="https://placehold.co/400x400/111827/fff?text=JH" alt="John Haiduk" class="rounded-full mx-auto w-48 h-48 md:w-64 md:h-64 object-cover shadow-lg">
+                    </div>
+                    <div class="md:w-2/3 animate-on-scroll" style="transition-delay: 150ms;">
+                        <h2 class="text-3xl font-bold mb-4">Engineer, Artist, Problem-Solver.</h2>
+                        <p class="mb-4 text-gray-600">With a background in Mechanical Engineering and a passion for creative problem-solving, I bring a unique blend of analytical rigor and artistic adaptability to every project. My experience as a Data Manager has shown me the power of well-designed systems, especially within the Google ecosystem.</p>
+                        <p class="mb-4 text-gray-600">I founded Haiduk Solutions to empower small business owners, creators, and non-profit leaders who feel overwhelmed by operational chaos. I thrive on transforming complex workflows into simple, automated systems that create clarity and free up your most valuable asset: your time.</p>
+                        <p class="mb-4 text-gray-600">My approach is hands-on and collaborative. We work together to build sustainable systems that you can confidently manage long after our project is complete.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- My Philosophy Section: New section with three illustrated cards -->
+        <section id="philosophy" class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold animate-on-scroll">My Philosophy</h2>
+                    <p class="text-lg text-gray-500 mt-4 max-w-2xl mx-auto animate-on-scroll" style="transition-delay: 150ms;">Our core beliefs guide every solution we craft, ensuring lasting impact.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Philosophy Card 1: Clarity -->
+                    <div class="bg-gray-50 p-8 rounded-lg text-center animate-on-scroll card-hover">
+                        <!-- Placeholder icon for Clarity -->
+                        <img src="https://placehold.co/80x80/000/fff?text=💡" alt="Clarity Icon" class="h-20 w-20 mx-auto mb-6">
+                        <h3 class="text-xl font-bold mb-2">Clarity Over Complexity</h3>
+                        <p class="text-gray-600">"We believe the most powerful solutions are the simplest ones. Our goal is to untangle complexity, not add to it."</p>
+                    </div>
+                    <!-- Philosophy Card 2: Empowerment -->
+                    <div class="bg-gray-50 p-8 rounded-lg text-center animate-on-scroll card-hover" style="transition-delay: 100ms;">
+                        <!-- Placeholder icon for Empowerment -->
+                        <img src="https://placehold.co/80x80/000/fff?text=💪" alt="Empowerment Icon" class="h-20 w-20 mx-auto mb-6">
+                        <h3 class="text-xl font-bold mb-2">Empowerment Through Education</h3>
+                        <p class="text-gray-600">"Our work isn't done until you feel confident and capable managing your new systems independently."</p>
+                    </div>
+                    <!-- Philosophy Card 3: Sustainability -->
+                    <div class="bg-gray-50 p-8 rounded-lg text-center animate-on-scroll card-hover" style="transition-delay: 200ms;">
+                        <!-- Placeholder icon for Sustainability -->
+                        <img src="https://placehold.co/80x80/000/fff?text=🌱" alt="Sustainability Icon" class="h-20 w-20 mx-auto mb-6">
+                        <h3 class="text-xl font-bold mb-2">Sustainability in Every Solution</h3>
+                        <p class="text-gray-600">"We build systems that grow with you, designed for long-term efficiency and minimal future intervention."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section: Outlines the core services offered -->
+        <section id="services" class="py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold animate-on-scroll">A Process Built for Clarity</h2>
+                    <p class="text-lg text-gray-500 mt-4 max-w-2xl mx-auto animate-on-scroll" style="transition-delay: 150ms;">We focus on four key areas to bring order and efficiency to your operations.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Service Tile 1: Structure Operations -->
+                    <div class="bg-gray-50 p-8 rounded-lg text-center animate-on-scroll card-hover">
+                        <img src="https://placehold.co/80x80/111827/fff?text=ORG" alt="Structure Operations Icon" class="h-20 w-20 mx-auto mb-6">
+                        <h3 class="text-xl font-bold mb-2">Structure Operations</h3>
+                        <p class="text-gray-600">Design a clear, scalable operational framework tailored to how you already work.</p>
+                    </div>
+                    <!-- Service Tile 2: Improve Workflows -->
+                    <div class="bg-gray-50 p-8 rounded-lg text-center animate-on-scroll card-hover" style="transition-delay: 100ms;">
+                        <img src="https://placehold.co/80x80/111827/fff?text=FLOW" alt="Improve Workflows Icon" class="h-20 w-20 mx-auto mb-6">
+                        <h3 class="text-xl font-bold mb-2">Improve Workflows</h3>
+                        <p class="text-gray-600">Identify bottlenecks and build automated workflows to eliminate manual, repetitive tasks.</p>
+                    </div>
+                    <!-- Service Tile 3: Implement Systems -->
+                    <div class="bg-gray-50 p-8 rounded-lg text-center animate-on-scroll card-hover" style="transition-delay: 200ms;">
+                        <img src="https://placehold.co/80x80/111827/fff?text=SYS" alt="Implement Systems Icon" class="h-20 w-20 mx-auto mb-6">
+                        <h3 class="text-xl font-bold mb-2">Implement Systems</h3>
+                        <p class="text-gray-600">Build and deploy custom, maintainable tools using Google Sheets, Forms, and Apps Script.</p>
+                    </div>
+                    <!-- Service Tile 4: Coach & Support -->
+                    <div class="bg-gray-50 p-8 rounded-lg text-center animate-on-scroll card-hover" style="transition-delay: 300ms;">
+                        <img src="https://placehold.co/80x80/111827/fff?text=COACH" alt="Coach & Support Icon" class="h-20 w-20 mx-auto mb-6">
+                        <h3 class="text-xl font-bold mb-2">Coach & Support</h3>
+                        <p class="text-gray-600">Provide live training and ongoing support to ensure you're empowered for the long-term.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section: Showcases client success stories -->
+        <section id="projects" class="py-24 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold animate-on-scroll">Client Success Stories</h2>
+                    <p class="text-lg text-gray-500 mt-4 max-w-2xl mx-auto animate-on-scroll" style="transition-delay: 150ms;">We thrive at the intersection of art and operations, helping diverse businesses streamline their work.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project Card 1: Precious Metals Shops -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden card-hover animate-on-scroll">
+                        <div class="p-8 flex flex-col items-center text-center">
+                            <img src="PRECIOUS METALS SHOPS.png" alt="Precious Metals Icon" class="h-20 w-20 mb-6" onerror="this.onerror=null;this.src='https://placehold.co/80x80/000/fff?text=Icon';">
+                            <h3 class="text-xl font-bold mb-2">Precious Metals Shops</h3>
+                            <p class="text-gray-600">Automated inventory, customer management, and daily cash tracking to improve accuracy and save hours of manual data entry.</p>
+                        </div>
+                    </div>
+                    <!-- Project Card 2: Art Galleries -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden card-hover animate-on-scroll" style="transition-delay: 100ms;">
+                        <div class="p-8 flex flex-col items-center text-center">
+                            <img src="ART GALLERIES.png" alt="Art Galleries Icon" class="h-20 w-20 mb-6" onerror="this.onerror=null;this.src='https://placehold.co/80x80/000/fff?text=Icon';">
+                            <h3 class="text-xl font-bold mb-2">Art Galleries</h3>
+                            <p class="text-gray-600">Streamlined artist submissions, exhibit planning, and sales tracking, creating a seamless flow from inquiry to sale.</p>
+                        </div>
+                    </div>
+                    <!-- Project Card 3: After-School Programs -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden card-hover animate-on-scroll" style="transition-delay: 200ms;">
+                        <div class="p-8 flex flex-col items-center text-center">
+                            <img src="AFTER SCHOOL PROGRAMS.png" alt="After School Programs Icon" class="h-20 w-20 mb-6" onerror="this.onerror=null;this.src='https://placehold.co/80x80/000/fff?text=Icon';">
+                            <h3 class="text-xl font-bold mb-2">After-School Programs</h3>
+                            <p class="text-gray-600">Transformed grant reporting, student tracking, and curriculum planning, providing key metrics for funding and operations.</p>
+                        </div>
+                    </div>
+                    <!-- Project Card 4: Hair Salons (New) -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden card-hover animate-on-scroll" style="transition-delay: 300ms;">
+                        <div class="p-8 flex flex-col items-center text-center">
+                            <img src="HAIR SALONS.png" alt="Hair Salons Icon" class="h-20 w-20 mb-6" onerror="this.onerror=null;this.src='https://placehold.co/80x80/000/fff?text=Icon';">
+                            <h3 class="text-xl font-bold mb-2">Hair Salons</h3>
+                            <p class="text-gray-600">Implemented a custom booking and client management system, reducing no-shows and improving stylist efficiency.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section: Call to action for users to get in touch -->
+        <section id="contact" class="py-24">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 animate-on-scroll">Ready to do better work with less effort?</h2>
+                <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto animate-on-scroll" style="transition-delay: 150ms;">Let's have a conversation about your challenges. The first step is a simple, no-pressure call to see if we're a good fit.</p>
+                <div class="animate-on-scroll" style="transition-delay: 300ms;">
+                    <!-- Mailto link for direct email contact -->
+                    <a href="mailto:jhaiduk01@gmail.com" class="btn btn-dark text-xl">Get in Touch</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section: Copyright and location information -->
+    <footer class="bg-gray-50 border-t border-gray-200">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-500">
+            <!-- Footer Logo -->
+            <a href="#" aria-label="Haiduk Solutions Home">
+                <img src="HAIDUK SOLUTIONS Logo.png" alt="Haiduk Solutions Logo" class="h-6 mx-auto mb-4" 
+                     onerror="this.onerror=null;this.src='https://placehold.co/150x30/000/fff?text=Haiduk+Solutions';">
+            </a>
+            <p>&copy; 2024 Haiduk Solutions. All Rights Reserved.</p>
+            <p class="text-sm mt-2">Built with passion in Lowell, MA.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for interactivity -->
+    <script>
+        // Mobile menu toggle functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden'); // Toggles the 'hidden' class to show/hide the menu
+            });
+        }
+
+        // Close mobile menu when a navigation link is clicked
+        const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden'); // Hides the mobile menu
+            });
+        });
+
+        // Scroll Animation Logic: Uses Intersection Observer API for efficient animations
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+
+        // Create a new Intersection Observer instance
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // If the element is in the viewport, add 'is-visible' class to trigger animation
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        // Observe each element with the 'animate-on-scroll' class
+        animatedElements.forEach(el => {
+            observer.observe(el);
+        });
+
+        // Function to handle scroll animation for body background
+        function handleScrollBackground() {
+            const scrollY = window.scrollY;
+            const maxScrollForEffect = 800; // Max scroll distance over which the effect takes place
+            const scrollProgress = Math.min(scrollY / maxScrollForEffect, 1); // Normalize to 0-1
+
+            // Interpolate color from white (255,255,255) to very light gray (248,248,248)
+            const r = 255 - (7 * scrollProgress); 
+            const g = 255 - (7 * scrollProgress);
+            const b = 255 - (7 * scrollProgress);
+
+            document.body.style.backgroundColor = `rgb(${Math.round(r)}, ${Math.round(g)}, ${Math.round(b)})`;
+        }
+
+        // Add scroll event listener for background animation
+        window.addEventListener('scroll', handleScrollBackground);
+
+        // Call it once on load to set initial state if page is already scrolled
+        window.addEventListener('load', handleScrollBackground);
+    </script>
+</body>
+</html>
